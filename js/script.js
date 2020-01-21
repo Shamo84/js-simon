@@ -5,7 +5,7 @@ $(document).ready(function() {
     array[i] = Math.floor(Math.random() * 100 + 1);
   }
   alert(array);
-  secondi = 5;
+  secondi = 30;
   intervallo = setInterval(countdown, 1000);
   finale = setTimeout(domande, (secondi+1.1)*1000);
 });
