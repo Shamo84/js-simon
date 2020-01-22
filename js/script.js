@@ -1,6 +1,7 @@
 $(document).ready(function() {
   randomArray = [];
   arrayUtente = [];
+  arrayIndovinati = [];
   i = 0
   do {
     newRandom = Math.floor(Math.random() * 100 + 1);
@@ -12,7 +13,6 @@ $(document).ready(function() {
   console.log(randomArray);
   secondi = 30;
   intervallo = setInterval(countdown, 1000);
-  finale = setTimeout(domande, (secondi+1.1)*1000);
 });
 
 function countdown() {
@@ -21,19 +21,19 @@ function countdown() {
   if (secondi < 0) {
     clearInterval(intervallo);
     $("#countdown").text("");
+    finale = setTimeout(domande, 100);
   }
 }
 
 function domande() {
-  indovinato = 0;
   for (var i = 1; i <= 5; i++) {
     arrayUtente[i - 1] = parseInt(prompt("inserisci il " + i + "° numero che pensi sia nella lista"));
     index = randomArray.indexOf(arrayUtente[i - 1]);
     if (index != -1) {
+      arrayIndovinati.push(arrayUtente[i - 1]);
       randomArray.splice(index, 1);
-      indovinato++;
       console.log(randomArray);
     }
   }
-  alert("hai indovinato " + indovinato + " numeri su 5")
+  alert("hai indovinato: " + arrayIndovinati + ". Hai dimenticato: " + randomArray );
 }
