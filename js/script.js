@@ -1,11 +1,15 @@
 $(document).ready(function() {
   array = [];
   arrayUtente = [];
-  for (var i = 0; i < 5; i++) {
-    array[i] = Math.floor(Math.random() * 100 + 1);
-  }
+  i = 0
+  do {
+    newRandom = Math.floor(Math.random() * 100 + 1);
+    if (array.includes(newRandom) == false) {
+      array.push(newRandom);
+    }
+  } while (array.length < 5);
   alert(array);
-  secondi = 30;
+  secondi = 5;
   intervallo = setInterval(countdown, 1000);
   finale = setTimeout(domande, (secondi+1.1)*1000);
 });
